@@ -1,0 +1,31 @@
+.SwipablePanel {
+	position: fixed;
+	background-color: transparent;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: ~"calc(50% - 20px)";
+	z-index: 20;
+	padding: 10px;
+	transform: translate(-100%, 0);
+	transition: transform .75s ease-in-out;
+	&.open {
+		transform: translate(0%, 0);
+		transition: transform .75s ease-in-out;
+		z-index: 20;
+	}
+
+}
+.SwipableContent {
+	transform-origin: 100% 50%;
+	transition: transform .75s ease-in-out;		
+	&.moved {
+		transform: scale(.5);
+		transform-origin: 100% 50%;
+		transition: transform .75s ease-in-out;
+	}
+	&.fixeded {
+		position: fixed;
+		overflow: hidden;
+	}
+}

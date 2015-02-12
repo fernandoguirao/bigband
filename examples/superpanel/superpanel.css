@@ -1,0 +1,205 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  background-color: #303030;
+}
+body * {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+}
+#panel {
+  position: fixed;
+  background-color: transparent;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: calc(50% - 20px);
+  z-index: 20;
+  padding: 10px;
+  transform: translate(-100%, 0);
+  transition: transform 0.75s ease-in-out;
+}
+#panel.open {
+  transform: translate(0%, 0);
+  transition: transform 0.75s ease-in-out;
+  z-index: 20;
+}
+#panel.open header i.fa-times {
+  left: 200%;
+  transition: left 0.5s ease-in-out 0.25s;
+}
+#panel header {
+  position: relative;
+}
+#panel header img {
+  position: absolute;
+  height: 50px;
+  max-width: 100px;
+  margin: 2px 5px;
+}
+#panel header i.fa-times {
+  cursor: pointer;
+  position: absolute;
+  left: 90%;
+  font-size: 22px;
+  color: #d8d8d8;
+  font-weight: lighter;
+  transition: left 0.5s ease-in-out;
+}
+#panel ul {
+  margin-top: 50%;
+  overflow-y: auto;
+  max-height: 85%;
+  min-height: 50%;
+}
+#panel ul::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+#panel ul::-moz-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+#panel ul::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+#panel ul::-moz-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+#panel ul::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+#panel ul::-moz-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+#panel ul:hover::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+#panel ul:hover::-moz-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+#panel ul:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+#panel ul:hover::-moz-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+#panel ul:first-child {
+  margin-top: 30%;
+}
+#panel ul li {
+  color: white;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+#panel ul li.open {
+  color: #e8a924;
+}
+#panel ul li.open .line {
+  background-color: #e8a924;
+  height: 95%;
+  transition: all 0.75s ease-in-out;
+}
+#panel ul li.open ul {
+  height: auto;
+  max-height: 300px;
+  transition: all 0.75s ease-in-out;
+}
+#panel ul li.open ul li {
+  max-height: 20px;
+  margin: 20px;
+  opacity: 1;
+  transition: all 0.75s ease-in-out;
+}
+#panel ul li .line {
+  background-color: white;
+  width: 1px;
+  height: 80%;
+  margin-left: -14.5px;
+  margin-top: 0px;
+  position: absolute;
+  transition: all 0.75s ease-in-out;
+}
+#panel ul li ul {
+  margin-top: 0;
+  overflow: hidden;
+  height: auto;
+  max-height: 50px;
+  transition: all 0.75s ease-in-out;
+}
+#panel ul li ul li {
+  list-style: none;
+  color: #e8a924;
+  position: relative;
+  margin-left: 30px;
+  margin-top: 15px;
+  height: auto;
+  margin: 0;
+  max-height: 7px;
+  opacity: 0;
+  transition: all 0.75s ease-in-out;
+}
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-origin: 100% 50%;
+  transition: transform 0.75s ease-in-out;
+}
+#app.moved {
+  transform: scale(0.5);
+  transform-origin: 100% 50%;
+  transition: transform 0.75s ease-in-out;
+}
+#app.fixeded {
+  position: fixed;
+  overflow: hidden;
+}
+#app nav#xs-topbar {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 16px;
+  background-color: white;
+  padding: 10px;
+  position: fixed;
+  z-index: 20;
+}
+@media (min-width: 600px) {
+  #app nav#xs-topbar {
+    display: none;
+  }
+}
+#app .block {
+  width: 100%;
+  height: 200px;
+}
+#app .red {
+  background-color: red;
+}
+#app .blue {
+  background-color: blue;
+}
+#app .green {
+  background-color: green;
+}
+#app .pink {
+  background-color: pink;
+}

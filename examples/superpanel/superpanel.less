@@ -1,0 +1,218 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: auto;
+	overflow-x: hidden;
+	background-color: rgb(48, 48, 48);
+	& * {
+		-webkit-margin-before: 0em;
+		-webkit-margin-after: 0em;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+		-webkit-padding-start: 0px;
+	}
+}
+
+// ESTILOS DE LAS SCROLLBARS
+
+.jscroller(@colorthumb:@verde-claro, @colortrack:#ccc, @width:9px, @height:9px, @colorthumbhover:@colorthumb, @colortrackhover:@colortrack) {
+  &::-webkit-scrollbar {
+    width: @width;
+    height: @height;
+  }
+  &::-moz-scrollbar {
+    width: @width;
+    height: @height;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: @colortrack;
+    border-radius: @width/2;
+  }  
+  &::-moz-scrollbar-track {
+    background-color: @colortrack;
+    border-radius: @width/2;
+  }
+  &::-webkit-scrollbar-thumb{
+    border-radius: @width/2;
+    background-color: @colorthumb;
+  }
+  &::-moz-scrollbar-thumb{
+    border-radius: @width/2;
+    background-color: @colorthumb;
+  }
+  &:hover{
+    &::-webkit-scrollbar-track {
+    background-color: @colortrackhover;
+    border-radius: @width/2;
+    }
+    &::-moz-scrollbar-track {
+    background-color: @colortrackhover;
+    border-radius: @width/2;
+    }
+  }
+  &:hover{
+    &::-webkit-scrollbar-thumb {
+    background-color: @colorthumbhover;
+    border-radius: @width/2;
+    }
+    &::-moz-scrollbar-thumb {
+    background-color: @colorthumbhover;
+    border-radius: @width/2;
+    }
+  }
+}
+
+#panel {
+	position: fixed;
+	background-color: transparent;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: ~"calc(50% - 20px)";
+	z-index: 20;
+	padding: 10px;
+	transform: translate(-100%, 0);
+	transition: transform .75s ease-in-out;
+	&.open {
+		transform: translate(0%, 0);
+		transition: transform .75s ease-in-out;
+		z-index: 20;
+    header{
+      img{
+      }
+      i.fa-times{    
+        left: 200%;
+        transition: left .5s ease-in-out .25s;
+      }
+    }
+	}
+  header{
+    position: relative;
+    img{
+      position: absolute;
+      height: 50px;
+      max-width: 100px;
+      margin: 2px 5px;
+    }
+    i.fa-times{  
+      cursor: pointer;  
+      position: absolute;
+      left: 90%;
+      font-size: 22px;
+      color: rgb(216, 216, 216);
+      font-weight: lighter;
+      transition: left .5s ease-in-out;
+    }
+  }
+	ul {
+		margin-top: 50%;
+    overflow-y: auto;
+    max-height: 85%;
+    min-height: 50%;
+    .jscroller(@colorthumb:rgba(255,255,255,.2), @colortrack:rgba(255,255,255,.05), @width:6px, @height:6px);
+		&:first-child {
+			margin-top: 30%;
+		}
+		li {
+			color: white;
+			position: relative;
+			margin-left: 20px;
+			margin-top: 5px;
+			text-transform: uppercase;
+			cursor: pointer;
+      &.open {
+        color: rgb(232, 169, 36);
+        .line {
+          background-color: rgb(232, 169, 36);
+          height: 95%;
+          transition: all .75s ease-in-out;
+        }
+        ul{
+          height: auto;
+          max-height: 300px;
+          transition: all .75s ease-in-out;
+          li {
+            max-height: 20px;
+            margin: 20px;
+            opacity: 1;
+            transition: all .75s ease-in-out;
+          }
+        }
+      }
+			.line {
+        background-color: white;
+				width: 1px;
+				height: 80%;
+				margin-left: -14.5px;
+				margin-top: 0px;
+				position: absolute;
+        transition: all .75s ease-in-out;
+			}
+			ul {
+				margin-top: 0;
+				overflow: hidden;
+				height: auto;
+				max-height: 50px;
+        transition: all .75s ease-in-out;
+				li {
+					list-style: none;
+					color: rgb(232, 169, 36);
+					position: relative;
+					margin-left: 30px;
+					margin-top: 15px;
+					height: auto;
+					margin: 0;
+					max-height: 7px;
+					opacity: 0;
+					transition: all .75s ease-in-out;
+				}
+			}
+		}
+  }
+}
+#app {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-origin: 100% 50%;
+	transition: transform .75s ease-in-out;		
+	&.moved {
+		transform: scale(.5);
+		transform-origin: 100% 50%;
+		transition: transform .75s ease-in-out;
+	}
+	&.fixeded {
+		position: fixed;
+		overflow: hidden;
+	}
+  nav#xs-topbar {
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 16px;
+    background-color: white;
+    padding: 10px;
+    position: fixed;
+    z-index: 20;
+    @media(min-width: 600px){
+      display: none
+    }
+  }
+	.block {
+		width: 100%;
+		height: 200px;
+	}
+	.red {
+		background-color: red;
+	}
+	.blue {
+		background-color: blue;
+	}
+	.green {
+		background-color: green;
+	}
+	.pink {
+		background-color: pink;
+	}
+}
