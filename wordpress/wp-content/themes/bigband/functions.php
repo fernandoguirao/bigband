@@ -83,4 +83,33 @@ protected $options_screen = null;
 		</div>
 		<?php
 	}	
+	
 };
+
+//AJAX
+wp_enqueue_script( 'mi-script-ajax',get_bloginfo('template_url') . '/includes/js/ajax.js', array( 'jquery' ) );
+wp_localize_script( 'mi-script-ajax', 'MyAjax', array( 'url' => admin_url( 'admin-ajax.php' ), 'nonce' => wp_create_nonce( 'myajax-post-comment-nonce' )  ) );
+
+//wp_localize_script( 'mi-script-ajax', 'MyAjax', array( 'url' => admin_url( 'admin-ajax.php' ) ) );
+/* Anyadimos las funciones a wordpress, esta con la funcion buscar_posts en ajax.js cambiar si hace falta*/
+add_action('wp_ajax_buscar_posts', 'buscar_posts_callback');
+add_action('wp_ajax_nopriv_buscar_posts', 'buscar_posts_callback');
+
+function buscar_posts_callback() {
+     
+    global $post;
+        $nonce = $_POST['nonce'];
+        if ( ! wp_verify_nonce( $nonce, 'myajax-post-comment-nonce' ) )
+        die ( 'Intento de hackeo localizado, mandando 4 servokosovares armados con bates de baseball!');
+        
+    $args = array( 'numberposts' => 10, 's' => $_POST['cadena']);
+     
+    $myposts = get_posts( $args );
+        echo '<ul>';
+    foreach( $myposts as $post ) :  setup_postdata($post); ?>
+        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+           
+        <?php endforeach; 
+        echo '</ul>';
+    die();
+}
